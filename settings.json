@@ -1,36 +1,191 @@
 {
   "go.gopath": "/home/tpr/go",
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--fast"],
   "go.alternateTools": {
     "go": "/snap/go/current/bin/go"
   },
+  "editor.rulers": [80, 120],
+  "workbench.colorCustomizations": {
+    "editorRuler.foreground": "#ff4081",
+    "statusBar.background": "#005f87",
+    "statusBar.noFolderBackground": "#005f87",
+    "statusBar.debuggingBackground": "#005f87",
+    "statusBar.foreground": "#ffffff",
+    "statusBar.debuggingForeground": "#ffffff"
+  },
+  "go.toolsManagement.autoUpdate": true,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "explorer.confirmDragAndDrop": false,
+  "editor.lineNumbers": "relative",
+  "explorer.confirmDelete": false,
+  "cSpell.language": "en,fr",
+  "cSpell.enabled": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 1,
+  // vim yank
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.color": "#a9dc7660",
+  "vim.highlightedyank.duration": 250,
+  "vim.useSystemClipboard": true,
+  // vim bindings
+  "vim.leader": "<space>",
+  "vim.insertModeKeyBindings": [{ "before": ["j", "k"], "after": ["<Esc>"] }],
+  "vim.visualModeKeyBindings": [
+    // { "before": ["j", "k"], "after": ["<Esc>"] },
+    // Stay in visual mode while indenting
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    // Move selected lines
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+    // Toggle comment selection
+    { "before": ["<leader>", "c"], "commands": ["editor.action.commentLine"] }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "e", "t"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<leader>", "e", "c"],
+      "commands": ["workbench.files.action.collapseExplorerFolders"]
+    },
+    {
+      "before": ["<leader>", "e", "f"],
+      "commands": ["workbench.files.action.showActiveFileInExplorer"]
+    },
+    // split windows
+    { "before": ["<leader>", "s", "v"], "commands": [":vsplit"] },
+    { "before": ["<leader>", "s", "h"], "commands": [":split"] },
+    {
+      "before": ["<leader>", "N"],
+      "commands": ["workbench.action.moveEditorToNextGroup"]
+    },
+    {
+      "before": ["<leader>", "P"],
+      "commands": ["workbench.action.moveEditorToPreviousGroup"]
+    },
+    // select panes
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+
+    {
+      "before": ["<leader>", "j"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["<leader>", "k"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    // Navigate tabs
+    {
+      "before": ["<leader>", "p"], // Focus previous tab at the left
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<leader>", "n"], // Focus next tab at the right
+      "commands": ["workbench.action.nextEditor"]
+    },
+    // LSP
+    {
+      "before": ["g", "p", "d"],
+      "commands": ["editor.action.peekDefinition"]
+    },
+    {
+      "before": ["g", "h"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
+    {
+      "before": ["g", "i"],
+      "commands": ["editor.action.goToImplementation"]
+    },
+    {
+      "before": ["g", "p", "i"],
+      "commands": ["editor.action.peekImplementation"]
+    },
+    {
+      "before": ["g", "q"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.referenceSearch.trigger"]
+    },
+    {
+      "before": ["g", "t"],
+      "commands": ["editor.action.goToTypeDefinition"]
+    },
+    {
+      "before": ["g", "p", "t"],
+      "commands": ["editor.action.peekTypeDefinition"]
+    },
+    // code actions
+    {
+      "before": ["<leader>", "c", "s"],
+      "commands": ["editor.action.triggerSuggest"]
+    },
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["<leader>", "r", "n"],
+      "commands": ["editor.action.rename"]
+    },
+    // utility
+    {
+      "before": ["<leader>", "w"],
+      "commands": [":w"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":q"]
+    },
+    {
+      "before": ["<leader>", "x"],
+      "commands": [":x"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    // Find
+    {
+      "before": ["leader", "r"],
+      "commands": ["find-it-faster.findWithinFiles"]
+    }
+  ],
+  "vim.sneak": true,
+  "vim.easymotion": true,
+  "vim.surround": true,
+  "vim.statusBarColorControl": true,
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-s>": true,
+    "<C-p>": true,
+    "<C-k>": true,
+    "<C-j>": false,
+    "<C-z>": true
+  },
+  // formatting
   "editor.formatOnSave": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "explorer.confirmDelete": false,
-  "cSpell.language": "en,fr",
-  "cSpell.enabled": false,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "window.zoomLevel": 1,
-  "vim.useSystemClipboard": true,
-  "vim.handleKeys": {
-    "<C-d>": true,
-    "<C-s>": true,
-    "<C-p>": false,
-    "<C-k>": false,
-    "<C-j>": false,
-    "<C-z>": false
-  },
-  "go.toolsManagement.autoUpdate": true,
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
@@ -43,5 +198,9 @@
   },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "git.ignoreRebaseWarning": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
